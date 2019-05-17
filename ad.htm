@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <script type="text/javascript">
+alert("My First JavaScript");
+    // 展示横幅广告
+    showAD() {
+      alert("welcome！！！");
+            if(CC_WECHATGAME && wx && typeof(wx.createBannerAd) != undefined) {
+                this.destroyAd()
+                // 横幅广告接入
+                let bannerAd = wx.createBannerAd({
+                    adUnitId: 'adunit-68c37174ce72ce6b',
+                    style: {
+                        left: 0,
+                        top: 0,
+                        width: 350
+                    }
+                })
+                // 一般放置屏幕的中下方
+                bannerAd.onResize(function(){
+                    bannerAd.style.left = screenWidth / 2 - bannerAd.style.realWidth / 2 + 0.1;
+                    bannerAd.style.top = screenHeight - bannerAd.style.realHeight + 0.1;
+                })
+
+                // 默认广告组件是关闭的
+                bannerAd.show()
+                this._lastBannerAd = bannerAd
+            }
+        },
+
+        // 销毁横幅广告
+        destroyAd() {
+            if(this._lastBannerAd) {
+                this._lastBannerAd.destroy()
+                this._lastBannerAd = null
+            }
+        },
+
+    
+            </script>
+</head>
+<body>
+  ABCD
+</body>
+</html>
